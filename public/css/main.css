@@ -279,6 +279,31 @@ body {
     color: #fff;
 }
 
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5em;
+    padding: 5em 0;
+
+    h1 {
+        display: flex;
+        justify-content: center;
+        color: #fff;
+        font-size: 6em;
+        margin: auto;
+    }
+
+    p {
+        text-align: center;
+        color: #fff;
+    }
+
+    .error-link {
+        color: #2c3e50;
+    }
+}
+
 @media (min-width: 720px) {
     .account {
         flex-direction: row;
