@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import './public/css/main.css'
-import logo from './public/img/argentBankLogo.png'
+import logo from '/img/argentBankLogo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faSignOut } from '@fortawesome/free-solid-svg-icons';
 
@@ -45,5 +44,7 @@ function Header({ isLogged }) {
 Header.propTypes = {
     isLogged: PropTypes.bool.isRequired,
 };
-
+Header.defaultProps = {
+    isLogged: false
+  };
 export default Header;

@@ -1,4 +1,3 @@
-import './public/css/main.css'
 
 function Footer() {
   return (

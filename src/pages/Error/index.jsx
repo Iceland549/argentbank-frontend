@@ -1,5 +1,4 @@
 // Error
-import './public/css/main.css'
 import { Link } from 'react-router-dom';
 
 

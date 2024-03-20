@@ -1,4 +1,4 @@
-import './public/css/main.css'
+import './css/main.css'
 
 function UserAccount() {
   return (
