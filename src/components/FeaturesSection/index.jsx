@@ -1,7 +1,7 @@
-import './css/main.css'
-import chat from './img/icon-chat.png.png'
-import money from './img/icon-money.png.png'
-import security from './img/icon-security.png.png'
+import '../../css/main.css'
+import chat from '../../assets/icon-chat.png'
+import money from '../../assets/icon-money.png'
+import security from '../../assets/icon-security.png'
 
 
 function FeaturesSection() {
