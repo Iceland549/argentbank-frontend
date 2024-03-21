@@ -1,4 +1,4 @@
-import './public/css/main.css'
+import './css/main.css'
 import chat from './img/icon-chat.png.png'
 import money from './img/icon-money.png.png'
 import security from './img/icon-security.png.png'

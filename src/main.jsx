@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import AppRouter from './AppRouter'
-import '../public/css/main.css';
+import '../css/main.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
