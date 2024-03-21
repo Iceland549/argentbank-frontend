@@ -289,14 +289,14 @@ body {
     h1 {
         display: flex;
         justify-content: center;
-        color: #fff;
+        color: #42b983;
         font-size: 6em;
         margin: auto;
     }
 
     p {
         text-align: center;
-        color: #fff;
+        color: #42b983;
     }
 
     .error-link {
