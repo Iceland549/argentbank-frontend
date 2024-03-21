@@ -24,13 +24,13 @@ function Header({ isLogged }) {
                     <FontAwesomeIcon icon={faUserCircle} />
                     Tony
                 </NavLink>
-                <NavLink className="main-nav-item" to="/sign-out">
+                <NavLink className="main-nav-item" to="/">
                     <FontAwesomeIcon icon={faSignOut} />
                     Sign Out
                 </NavLink>
             </>
             ) : (
-            <NavLink className="main-nav-item" to="/sign-in">
+            <NavLink className="main-nav-item" to="/SignIn">
                 <FontAwesomeIcon icon={faUserCircle} />
                 Sign In
             </NavLink>
