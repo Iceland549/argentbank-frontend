@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { userSlice } from "../pages/user/userSlice"; 
+import { userSlice } from "./pages/User/UserSlice"; 
 
 const initialState = {
   user: {
