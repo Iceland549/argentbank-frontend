@@ -55,31 +55,32 @@ export const userSlice = createSlice({
       state.user = null;
     },
   },
-  extraReducers: {
-    [loginUser.pending]: (state) => {
-      state.isLoading = true;
-      state.error = null;
-    },
-    [loginUser.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.user = action.payload;
-    },
-    [loginUser.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload.error;
-    },
-    [signupUser.pending]: (state) => {
-      state.isLoading = true;
-      state.error = null;
-    },
-    [signupUser.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.user = action.payload;
-    },
-    [signupUser.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload.error;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loginUser.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = action.payload;
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload.error;
+      })
+      .addCase(signupUser.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(signupUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = action.payload;
+      })
+      .addCase(signupUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload.error;
+      });
   },
 });
 
