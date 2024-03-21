@@ -1,10 +1,21 @@
 import '../../css/main.css'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../pages/User/UserSlice'; 
+import { selectUser } from '../../selector'; 
 
 function UserAccount() {
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser); 
+
+  useEffect(() => {
+    dispatch(loginUser({ email: 'tony@stark.com', password: 'password123' }));
+  }, [dispatch]);
+
   return (
     <main className="main bg-dark">
       <div className="header">
-        <h1>Welcome back<br />Tony Jarvis!</h1>
+        <h1>Welcome back<br />{user ? user.name : 'Guest'}!</h1>
         <button className="edit-button">Edit Name</button>
       </div>
       <h2 className="sr-only">Accounts</h2>
@@ -43,3 +54,4 @@ function UserAccount() {
 }
 
 export default UserAccount;
+
