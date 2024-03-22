@@ -1,16 +1,23 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAction, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+export const updateUserLoginStatus = (isLogged) => (dispatch) => {
+  dispatch(setUserLoginStatus(isLogged));
+};
+
+export const loginUserSuccess = createAction('user/loginUserSuccess')
 
 const initialState = {
   user: null,
   isLoading: false,
   error: null,
+  isLogged: false,
 };
 
 export const loginUser = createAsyncThunk(
   'user/loginUser',
   async (loginData, thunkAPI) => {
     try {
-      const response = await fetch('http://locahost:3001/api/user/login', {
+      const response = await fetch('http://localhost:3001/api/v1/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -18,6 +25,10 @@ export const loginUser = createAsyncThunk(
         body: JSON.stringify(loginData),
       });
       const data = await response.json();
+
+      thunkAPI.dispatch(loginUserSuccess(data.user));
+      thunkAPI.dispatch(setUserLoginStatus(true));
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
@@ -25,11 +36,16 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+export const logoutUser = () => (dispatch) => {
+  dispatch(clearUser());
+  dispatch(setUserLoginStatus(false));
+};
+
 export const signupUser = createAsyncThunk(
   'user/signupUser',
   async (signupData, thunkAPI) => {
     try {
-      const response = await fetch('http://locahost:3001/api/user/signup', {
+      const response = await fetch('http://localhost:3001/api/v1/user/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,6 +70,12 @@ export const userSlice = createSlice({
     clearUser(state) {
       state.user = null;
     },
+    setUserLoginStatus(state, action) {
+      state.isLogged = action.payload;
+    },
+    [loginUserSuccess.type]: (state, action) => {
+      state.user = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -84,6 +106,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUser, clearUser } = userSlice.actions;
+export const { setUser, clearUser, setUserLoginStatus } = userSlice.actions;
 
 export default userSlice.reducer;
