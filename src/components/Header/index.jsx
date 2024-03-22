@@ -1,11 +1,22 @@
 import { NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import logo from '../../assets/argentBankLogo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faSignOut } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { logoutUser } from '../../pages/User/UserSlice';
+
+function Header() {
+  const isLogged = useSelector(state =>
+    state.user.isLogged);
+
+  const dispatch = useDispatch();
+
+  const handleSignOut = () => {
+    dispatch(logoutUser());  
+  }
 
 
-function Header({ isLogged }) {
   return (
     <header>
       <nav className="main-nav">
@@ -24,7 +35,7 @@ function Header({ isLogged }) {
                     <FontAwesomeIcon icon={faUserCircle} />
                     Tony
                 </NavLink>
-                <NavLink className="main-nav-item" to="/">
+                <NavLink className="main-nav-item" to="/" onClick={handleSignOut}>
                     <FontAwesomeIcon icon={faSignOut} />
                     Sign Out
                 </NavLink>
@@ -41,10 +52,4 @@ function Header({ isLogged }) {
   );
 }
 
-Header.propTypes = {
-    isLogged: PropTypes.bool.isRequired,
-};
-Header.defaultProps = {
-    isLogged: false
-  };
 export default Header;
