@@ -1,6 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { userSlice } from "./pages/User/UserSlice"; 
-import thunk from 'redux-thunk';
 
 const initialState = {
   user: {
@@ -13,7 +12,6 @@ const store = configureStore({
     user: userSlice.reducer, 
   }),
   preloadedState: initialState,
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(thunk),
 });
 
 export default store;
