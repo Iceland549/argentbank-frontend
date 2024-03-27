@@ -11,6 +11,7 @@ const initialState = {
   isLoading: false,
   error: null,
   isLogged: false,
+  name: "Guest",
 };
 
 export const loginUser = createAsyncThunk(
@@ -75,6 +76,9 @@ export const userSlice = createSlice({
     },
     [loginUserSuccess.type]: (state, action) => {
       state.user = action.payload;
+    },
+    updateUserName(state, action) {
+      state.user.name = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -106,6 +110,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUser, clearUser, setUserLoginStatus } = userSlice.actions;
+export const { setUser, clearUser, setUserLoginStatus, updateUserName } = userSlice.actions;
 
 export default userSlice.reducer;
