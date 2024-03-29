@@ -7,7 +7,7 @@ export const updateUserLoginStatus = (isLogged) => (dispatch) => {
 export const loginUserSuccess = createAction('user/loginUserSuccess')
 
 const initialState = {
-  user: null,
+  username: '',
   isLoading: false,
   error: null,
   isLogged: false,
@@ -64,9 +64,10 @@ export const signupUser = createAsyncThunk(
 export const userSlice = createSlice({
   name: 'user',
   initialState,
+  username: '',
   reducers: {
-    setUser(state, action) {
-      state.user = action.payload;
+    setUsername(state, action) {
+      state.user.username = action.payload;
     },
     clearUser(state) {
       state.user = null;
@@ -78,7 +79,7 @@ export const userSlice = createSlice({
       state.user = action.payload;
     },
     updateUserName(state, action) {
-      state.user.name = action.payload;
+      state.username = action.payload;
     }
   },
   extraReducers: (builder) => {
