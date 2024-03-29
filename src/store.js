@@ -4,6 +4,7 @@ import { userSlice } from "./pages/User/UserSlice";
 const initialState = {
   user: {
     isAuthenticated: false, 
+    username: '',
   },
 };
 
