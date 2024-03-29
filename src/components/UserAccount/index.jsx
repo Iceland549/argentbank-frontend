@@ -21,8 +21,12 @@ function UserAccount() {
   return (
     <main className="main bg-dark">
       <div className="header">
-        <h1>Welcome back<br />{user ? user.name || 'Guest' : 'Guest'}!</h1>
-        <button className="edit-button"onClick={handleEditNameClick}>Edit Name</button>
+      {!isEditName && (
+        <>
+          <h1>Welcome back<br />{user ? user.name || 'Guest' : 'Guest'}!</h1>
+          <button className="edit-button" onClick={handleEditNameClick}>Edit Name</button>
+        </>
+      )}
         {isEditName && <EditNameForm />}
       </div>
       <h2 className="sr-only">Accounts</h2>
