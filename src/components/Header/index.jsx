@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/argentBankLogo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faSignOut } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faCog, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../pages/User/UserSlice';
@@ -37,14 +37,20 @@ function Header() {
         <div>
             {isLogged ? (
             <>
+              <div className='user'>
                 <NavLink className="main-nav-item" to="/user">
-                    <FontAwesomeIcon icon={faUserCircle} />
+                  <div className="user-name">
                     {currentUsername}
+                  </div>                    
+                  <FontAwesomeIcon icon={faUserCircle} className="user-icon"/>
                 </NavLink>
                 <NavLink className="main-nav-item" to="/" onClick={handleSignOut}>
-                    <FontAwesomeIcon icon={faSignOut} />
-                    Sign Out
+                  <div className='user-set'>
+                    <FontAwesomeIcon icon={faCog} />
+                    <FontAwesomeIcon icon={faPowerOff} />
+                  </div>
                 </NavLink>
+              </div>
             </>
             ) : (
             <NavLink className="main-nav-item" to="/SignIn">
