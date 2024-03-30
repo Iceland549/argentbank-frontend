@@ -54,9 +54,15 @@ body {
     color: #42b983;
 }
 
+.user {
+    display: ruby-text;
+}
+
+
 .main-nav-item {
     text-decoration: none;
     margin-right: 0.5rem;
+
 }
 
 .main-nav-item:hover {
@@ -72,6 +78,78 @@ body {
     max-width: 100%;
     width: 200px;
 }
+
+.user-set,
+.user-name,
+.user-icon {
+    color: #00bc77;
+}
+
+.edit-user-info {
+    background-color: #fff;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.label {
+    flex: 1;
+    color: black;
+}
+
+.input-field {
+    flex: 2;
+    background-color: lightgray;
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+.input-field:focus {
+    background-color: #fff;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.save-button,
+.cancel-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.save-button {
+    background-color: #00bc77;
+    color: white;
+}
+
+.cancel-button {
+    background-color: #00bc77;
+    color: white;
+}
+
 
 .hero {
     background-image: url('../assets/bank-tree.jpeg');
