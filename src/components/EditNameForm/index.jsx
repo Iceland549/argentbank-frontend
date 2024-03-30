@@ -35,29 +35,36 @@ function EditNameForm() {
     <div className="edit-user-info">
       <h1 className="title">Edit user info</h1>
       {error && <p className="error-message">{error}</p>}
-      <input 
-        type="text" 
-        placeholder="User name" 
-        value={userName} 
-        onChange={(e) => setUserName(e.target.value)} 
-        className="input-field"
-      />
-      <input 
-        type="text" 
-        placeholder="First name" 
-        value={firstName} 
-        onChange={(e) => setFirstName(e.target.value)} 
-        className="input-field"
-      />
-      <input 
-        type="text" 
-        placeholder="Last name" 
-        value={lastName} 
-        onChange={(e) => setLastName(e.target.value)} 
-        className="input-field"
-      />
-      <button onClick={handleSave} className="save-button">Save</button>
-      <button onClick={handleCancel} className="cancel-button">Cancel</button>
+      <div className='input'>
+        <label className='label'>User name:</label>
+        <input 
+          type="text" 
+          placeholder="User name" 
+          value={userName} 
+          onChange={(e) => setUserName(e.target.value)} 
+          className="input-field"
+        />
+        <label className='label'>First name:</label>
+        <input 
+          type="text" 
+          placeholder="First name" 
+          value={firstName} 
+          onChange={(e) => setFirstName(e.target.value)} 
+          className="input-field"
+        />
+        <label className='label'>Last name:</label>
+        <input 
+          type="text" 
+          placeholder="Last name" 
+          value={lastName} 
+          onChange={(e) => setLastName(e.target.value)} 
+          className="input-field"
+        />
+      </div>
+      <div className='button'>
+        <button onClick={handleSave} className="save-button">Save</button>
+        <button onClick={handleCancel} className="cancel-button">Cancel</button>
+      </div>
     </div>
   );
 }
