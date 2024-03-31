@@ -357,6 +357,10 @@ body {
     color: #fff;
 }
 
+.error-message {
+    color: black;
+}
+
 .error-container {
     display: flex;
     flex-direction: column;
