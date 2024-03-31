@@ -11,7 +11,8 @@ function EditNameForm() {
     const dispatch = useDispatch();
 
 
-    const handleSave = () => {
+    const handleSave = (e) => {
+      e.preventDefault();
         if (!userName.trim()) {
             setError('Veuillez saisir un nom d\'utilisateur.');
             return; 
@@ -32,7 +33,7 @@ function EditNameForm() {
     };
   
   return (
-    <div className="edit-user-info">
+    <form className="edit-user-info" id='user-info-form'>
       <h1 className="title">Edit user info</h1>
       {error && <p className="error-message">{error}</p>}
       <div className='input'>
@@ -65,7 +66,7 @@ function EditNameForm() {
         <button onClick={handleSave} className="save-button">Save</button>
         <button onClick={handleCancel} className="cancel-button">Cancel</button>
       </div>
-    </div>
+    </form>
   );
 }
 
