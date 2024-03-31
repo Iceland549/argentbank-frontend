@@ -11,7 +11,6 @@ const initialState = {
   isLoading: false,
   error: null,
   isLogged: false,
-  name: "Guest",
 };
 
 export const loginUser = createAsyncThunk(
