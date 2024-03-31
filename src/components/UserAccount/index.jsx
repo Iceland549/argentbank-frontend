@@ -1,19 +1,12 @@
 import '../../css/main.css'
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../../pages/User/UserSlice'; 
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { selectUser } from '../../selector'; 
 import EditNameForm from '../EditNameForm';
 
 function UserAccount() {
-  const dispatch = useDispatch();
   const user = useSelector(selectUser); 
   const [isEditName, setIsEditName] = useState(false);
-
-
-  useEffect(() => {
-    dispatch(loginUser({ email: 'tony@stark.com', password: 'password123' }));
-  }, [dispatch]);
 
   const handleEditNameClick = () => {
     setIsEditName(true);
