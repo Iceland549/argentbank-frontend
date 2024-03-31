@@ -10,6 +10,7 @@ function UserAccount() {
   const user = useSelector(selectUser); 
   const [isEditName, setIsEditName] = useState(false);
 
+
   useEffect(() => {
     dispatch(loginUser({ email: 'tony@stark.com', password: 'password123' }));
   }, [dispatch]);
@@ -23,7 +24,7 @@ function UserAccount() {
       <div className="header">
       {!isEditName && (
         <>
-          <h1>Welcome back<br />{user ? user.name || 'Guest' : 'Guest'}!</h1>
+          <h1>Welcome back<br />{user ? user : 'Tony'}!</h1>
           <button className="edit-button" onClick={handleEditNameClick}>Edit Name</button>
         </>
       )}
