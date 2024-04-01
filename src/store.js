@@ -3,8 +3,13 @@ import { userSlice } from "./pages/User/UserSlice";
 
 const initialState = {
   user: {
-    isAuthenticated: false, 
-    username: '',
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    userName: '',
+    isAuthenticated: false,
+    token: '', 
   },
 };
 
