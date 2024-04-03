@@ -1,5 +1,5 @@
 import '../../css/main.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../pages/User/UserSlice';
 import { useNavigate } from 'react-router-dom';
@@ -7,23 +7,41 @@ import { useNavigate } from 'react-router-dom';
 function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const error = useSelector((state) => state.user.error); // Sélectionne l'état d'erreur dans le store Redux
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const token = useSelector(state => state.user.token);
+  const error = useSelector(state => state.user.error);
+
+  useEffect(() => {
+    console.log("Token:", token);
+    if (token) {
+      navigate('/User');
+      console.log('Redirecting to user page...');
+    }
+  }, [token, navigate]);
+  console.log('Token:', token);
+
 
   const handleSignIn = async (e) => {
     e.preventDefault();   
-
+    console.log('Submitting form with email:', email, 'and password:', password);
+    dispatch(loginUser({ email, password }));
+    
     try {
       const loginData = {
         email: email,
         password: password
       };
+      console.log('Login data:', loginData);
       await dispatch(loginUser(loginData));
-      if (!error) {
-        navigate('/User');
+      console.log('Login request sent.');
+      console.log('Login request completed successfully.');
+      
+      if (error) {
+        console.log('Error:', error);
+        console.error('Authentication failed:', error);
+        console.log('Token after dispatch:', token);
       }
-
     } catch (error) {
       console.error('Failed to sign in:', error);
     }
@@ -34,7 +52,6 @@ function SignInForm() {
       <section className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
-        {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSignIn}>
           <div className="input-wrapper">
             <label htmlFor="username">Username</label>
