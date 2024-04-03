@@ -68,7 +68,7 @@ export const signupUser = createAsyncThunk(
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    username: '',
+    userName: '',
     isLoading: false,
     error: null,
     isLogged: false,
@@ -81,7 +81,7 @@ export const userSlice = createSlice({
   },
   reducers: {
     setUsername(state, action) {
-      state.username = action.payload;
+      state.userName = action.payload;
     },
     setToken(state, action) {
       state.token = action.payload.token;
@@ -90,7 +90,7 @@ export const userSlice = createSlice({
     clearUser(state) {
       return {
         ...state,
-        username: '',
+        userName: '',
         isLoading: false,
         error: null,
         isLogged: false,
@@ -105,7 +105,8 @@ export const userSlice = createSlice({
       state.isAuthenticated = action.payload;
     },
     updateUserDetails(state, action) {
-      const { firstName, lastName } = action.payload;
+      const { userName, firstName, lastName } = action.payload;
+      state.userName = userName;
       state.firstName = firstName;
       state.lastName = lastName;
     }
