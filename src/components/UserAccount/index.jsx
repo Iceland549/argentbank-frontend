@@ -1,11 +1,12 @@
 import '../../css/main.css'
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectUser} from '../../selector'; 
+import { selectUser } from '../../selector'; 
 import EditNameForm from '../EditNameForm';
 
 function UserAccount() {
   const user = useSelector(selectUser); 
+  console.log('User data:', user); 
   const [isEditName, setIsEditName] = useState(false);
 
 
@@ -18,7 +19,7 @@ function UserAccount() {
       <div className="header">
       {!isEditName && (
         <>
-          <h1>Welcome back<br />{user ? user : 'Guest'}!</h1>
+          <h1>Welcome back<br />{user ? user.userName : 'Guest'}!</h1>
           <button className="edit-button" onClick={handleEditNameClick}>Edit Name</button>
         </>
       )}
