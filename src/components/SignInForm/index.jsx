@@ -1,7 +1,7 @@
 import '../../css/main.css'
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../../pages/User/UserSlice';
+import { loginUser } from '../../slices/UserSlice';
 import { useNavigate } from 'react-router-dom';
 
 function SignInForm() {
