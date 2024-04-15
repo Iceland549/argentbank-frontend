@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../../css/main.css'
 import { useDispatch } from 'react-redux';
-import { updateUserDetails } from '../../pages/User/UserSlice';
+import { updateUserProfile } from '../../pages/User/UserSlice';
 
 function EditNameForm() {
     const [userName, setUserName] = useState('');
@@ -20,7 +20,7 @@ function EditNameForm() {
         console.log('New user data to update:', { userName, firstName, lastName });
 
         setError('');
-        dispatch(updateUserDetails({ userName, firstName, lastName }));
+        dispatch(updateUserProfile({ userName, firstName, lastName }));
 
         setUserName('');
         setFirstName('');
