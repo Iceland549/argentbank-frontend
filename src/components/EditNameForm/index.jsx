@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../../css/main.css'
 import { useDispatch } from 'react-redux';
-import { updateUserProfile } from '../../pages/User/UserSlice';
+import { updateUserProfile } from '../../slices/UserSlice';
 
 function EditNameForm() {
     const [userName, setUserName] = useState('');
