@@ -149,7 +149,9 @@ export const userSlice = createSlice({
       })
       .addCase(signupUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload;
+        state.userName = action.payload.userName;
+        state.firstName = action.payload.firstName;
+        state.lastName = action.payload.lastName;
       })
       .addCase(signupUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -161,7 +163,9 @@ export const userSlice = createSlice({
       })
       .addCase(getUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload;
+        state.userName = action.payload.userName;
+        state.firstName = action.payload.firstName;
+        state.lastName = action.payload.lastName;
       })
       .addCase(getUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -172,8 +176,9 @@ export const userSlice = createSlice({
         state.error = null;
       })
       .addCase(updateUserProfile.fulfilled, (state, action) => {
+        console.log('Payload:', action.payload);
         state.isLoading = false;
-        state.userName = action.payload.userName;
+        state.userName = action.payload.body.userName;
         state.firstName = action.payload.firstName;
         state.lastName = action.payload.lastName;
       })
