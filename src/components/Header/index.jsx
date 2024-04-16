@@ -4,22 +4,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faCog, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { logoutUser } from '../../pages/User/UserSlice';
-import { selectUser } from '../../selector'; 
+import { clearUser } from '../../slices/UserSlice';
+import { selectUser} from '../../selector'; 
 
 
 function Header() {
   const isLogged = useSelector(state =>
     state.user.isLogged);
 
-  const currentUsername = useSelector(selectUser);
-  console.log(currentUsername);
+  const user = useSelector(selectUser);
+  console.log('User data in Header:', user);
 
 
   const dispatch = useDispatch();
 
   const handleSignOut = () => {
-    dispatch(logoutUser());  
+    dispatch(clearUser());  
   }
 
 
@@ -40,7 +40,7 @@ function Header() {
               <div className='user'>
                 <NavLink className="main-nav-item" to="/user">
                   <div className="user-name">
-                    {currentUsername}
+                    {user.userName}
                   </div>                    
                   <FontAwesomeIcon icon={faUserCircle} className="user-icon"/>
                 </NavLink>
