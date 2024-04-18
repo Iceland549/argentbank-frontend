@@ -13,7 +13,7 @@ export const loginUser = createAsyncThunk(
       });
       const data = await response.json();
 
-      if (data.status==200) {
+      if (data.status == 200) {
         return data;
       } else {
         return thunkAPI.rejectWithValue({ error: data.message });
@@ -56,7 +56,7 @@ export const getUser = createAsyncThunk(
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization : 'Bearer '+ localStorage.getItem('token') 
+          Authorization: 'Bearer ' + localStorage.getItem('token')
         },
         body: JSON.stringify(signupData),
       });
@@ -163,9 +163,9 @@ export const userSlice = createSlice({
       })
       .addCase(getUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.userName = action.payload.userName;
-        state.firstName = action.payload.firstName;
-        state.lastName = action.payload.lastName;
+        state.userName = action.payload.body.userName;
+        state.firstName = action.payload.body.firstName;
+        state.lastName = action.payload.body.lastName;
       })
       .addCase(getUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -176,14 +176,17 @@ export const userSlice = createSlice({
         state.error = null;
       })
       .addCase(updateUserProfile.fulfilled, (state, action) => {
+        console.log("Data returned by API:", action.payload.body);
         state.isLoading = false;
         state.userName = action.payload.body.userName;
+        state.firstName = action.payload.body.firstName;
+        state.lastName = action.payload.body.lastName;
       })
       .addCase(updateUserProfile.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload.error;
       });
-    },
+  },
 });
 
 export const { clearUser } = userSlice.actions;
