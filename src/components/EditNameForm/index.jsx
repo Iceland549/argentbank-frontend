@@ -1,71 +1,69 @@
 import { useState } from 'react';
 import '../../css/main.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '../../selector';
 import { updateUserProfile } from '../../slices/UserSlice';
 
-function EditNameForm() {
-    const [userName, setUserName] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [error, setError] = useState('');
-    const dispatch = useDispatch();
+// eslint-disable-next-line react/prop-types
+function EditNameForm({ onCancel }) {
+  const [userName, setUserName] = useState('');
+  const { firstName, lastName } = useSelector(selectUser);
+  const [error, setError] = useState('');
+  const dispatch = useDispatch();
+
+  console.log("firstName:", firstName);
+  console.log("lastName:", lastName);
 
 
-    const handleSave = (e) => {
-      e.preventDefault();
-        if (!userName.trim()) {
-            setError('Veuillez saisir un nom d\'utilisateur.');
-            return; 
-        }
-        console.log('New user data to update:', { userName, firstName, lastName });
+  const handleSave = (e) => {
+    e.preventDefault();
+    if (!userName.trim()) {
+      setError('Veuillez saisir un nom d\'utilisateur.');
+      return;
+    }
+    console.log('New user data to update:', { userName });
 
-        setError('');
-        dispatch(updateUserProfile({ userName, firstName, lastName }));
+    setError('');
+    dispatch(updateUserProfile({ userName }));
 
-        setUserName('');
-        setFirstName('');
-        setLastName('');
-    };
+    setUserName('');
 
-    const handleCancel = () => {
-        setUserName('');
-        setFirstName('');
-        setLastName('');
-    };
-  
+  };
+
+
   return (
-    <form className="edit-user-info" id='user-info-form'>
+    <form className="edit-user-info" id='user-info-form' onSubmit={handleSave}>
       <h1 className="title">Edit user info</h1>
       {error && <p className="error-message">{error}</p>}
       <div className='input'>
         <label className='label'>User name:</label>
-        <input 
-          type="text" 
-          placeholder="User name" 
-          value={userName} 
-          onChange={(e) => setUserName(e.target.value)} 
+        <input
+          type="text"
+          placeholder="User name"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
           className="input-field"
         />
         <label className='label'>First name:</label>
-        <input 
-          type="text" 
-          placeholder="First name" 
-          value={firstName} 
-          onChange={(e) => setFirstName(e.target.value)} 
+        <input
+          disabled
+          type="text"
+          placeholder="First name"
+          value={firstName}
           className="input-field"
         />
         <label className='label'>Last name:</label>
-        <input 
-          type="text" 
-          placeholder="Last name" 
-          value={lastName} 
-          onChange={(e) => setLastName(e.target.value)} 
+        <input
+          disabled
+          type="text"
+          placeholder="Last name"
+          value={lastName}
           className="input-field"
         />
       </div>
       <div className='button'>
-        <button onClick={handleSave} className="save-button">Save</button>
-        <button onClick={handleCancel} className="cancel-button">Cancel</button>
+        <button type='submit' className="save-button">Save</button>
+        <button onClick={onCancel} type='button' className="cancel-button">Cancel</button>
       </div>
     </form>
   );
