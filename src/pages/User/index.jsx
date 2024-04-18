@@ -9,6 +9,7 @@ import { getUser } from '../../slices/UserSlice';
 
 function User() {
     const user = useSelector(selectUser);
+    const { firstName, lastName } = useSelector(state => state.user);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const token = useSelector(state => state.user.token);
@@ -32,7 +33,7 @@ function User() {
             <div className="header">
                 {!isEditName && (
                     <>
-                        <h1>Welcome back<br />{user ? user.userName : 'Guest'}!</h1>
+                        <h1>Welcome back<br />{user ? `${firstName} ${lastName}` : 'Guest'}!</h1>
                         <button className="edit-button" onClick={handleEditNameClick}>Edit Name</button>
                     </>
                 )}
