@@ -176,7 +176,6 @@ export const userSlice = createSlice({
         state.error = null;
       })
       .addCase(updateUserProfile.fulfilled, (state, action) => {
-        console.log('Payload:', action.payload);
         state.isLoading = false;
         state.userName = action.payload.body.userName;
         state.firstName = action.payload.firstName;
