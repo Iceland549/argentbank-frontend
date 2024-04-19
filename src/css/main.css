@@ -50,6 +50,10 @@ body {
     color: #2c3e50;
 }
 
+.svg-inline--fa {
+    margin-right: 0.5em;
+}
+
 .main-nav a.router-link-exact-active {
     color: #42b983;
 }
