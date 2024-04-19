@@ -29,7 +29,7 @@ function User() {
     }
 
     return (
-        <main className="main bg-dark">
+        <main className="main bg-dark" style={{ height: token ? 'unset' : 'initial' }}>
             <div className="header">
                 {!isEditName && (
                     <>
