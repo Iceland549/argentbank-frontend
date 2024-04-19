@@ -62,6 +62,9 @@ body {
     display: ruby-text;
 }
 
+.user-name {
+    margin-right: 0.5em;
+}
 
 .main-nav-item {
     text-decoration: none;
