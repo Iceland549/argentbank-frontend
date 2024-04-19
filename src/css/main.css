@@ -246,12 +246,19 @@ body {
     color: #fff;
 }
 
+.main.bg-dark {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80vh;
+}
+
 .sign-in-content {
     box-sizing: border-box;
     background-color: white;
-    width: 300px;
+    width: 40vh;
+    height: 64vh;
     margin: 0 auto;
-    margin-top: 3rem;
     padding: 2rem;
 }
 
