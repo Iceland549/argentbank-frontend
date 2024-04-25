@@ -5,14 +5,11 @@ import { selectUser } from '../../selector';
 import { updateUserProfile } from '../../slices/UserSlice';
 
 // eslint-disable-next-line react/prop-types
-function EditNameForm({ onCancel }) {
+function EditNameForm({ onSave, onCancel }) {
   const [userName, setUserName] = useState('');
   const { firstName, lastName } = useSelector(selectUser);
   const [error, setError] = useState('');
   const dispatch = useDispatch();
-
-  console.log("firstName:", firstName);
-  console.log("lastName:", lastName);
 
 
   const handleSave = (e) => {
@@ -21,11 +18,10 @@ function EditNameForm({ onCancel }) {
       setError('Veuillez saisir un nom d\'utilisateur.');
       return;
     }
-    console.log('New user data to update:', { userName });
 
     setError('');
     dispatch(updateUserProfile({ userName }));
-
+    onSave();
     setUserName('');
 
   };
