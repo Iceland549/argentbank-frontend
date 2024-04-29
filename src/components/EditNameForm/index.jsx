@@ -10,6 +10,8 @@ function EditNameForm({ onSave, onCancel }) {
   const { firstName, lastName } = useSelector(selectUser);
   const [error, setError] = useState('');
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+
 
 
   const handleSave = (e) => {
@@ -35,7 +37,7 @@ function EditNameForm({ onSave, onCancel }) {
         <label className='label'>User name:</label>
         <input
           type="text"
-          placeholder="User name"
+          placeholder={user.userName}
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
           className="input-field"
