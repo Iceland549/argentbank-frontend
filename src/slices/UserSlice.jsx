@@ -179,8 +179,6 @@ export const userSlice = createSlice({
         console.log("Data returned by API:", action.payload.body);
         state.isLoading = false;
         state.userName = action.payload.body.userName;
-        state.firstName = action.payload.body.firstName;
-        state.lastName = action.payload.body.lastName;
       })
       .addCase(updateUserProfile.rejected, (state, action) => {
         state.isLoading = false;
