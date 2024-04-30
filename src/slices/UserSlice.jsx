@@ -50,7 +50,7 @@ export const signupUser = createAsyncThunk(
 
 export const getUser = createAsyncThunk(
   'user/getUser',
-  async (signupData, thunkAPI) => {
+  async (getUserData, thunkAPI) => {
     try {
       const response = await fetch('http://localhost:3001/api/v1/user/profile', {
         method: 'POST',
@@ -58,7 +58,7 @@ export const getUser = createAsyncThunk(
           'Content-Type': 'application/json',
           Authorization: 'Bearer ' + localStorage.getItem('token')
         },
-        body: JSON.stringify(signupData),
+        body: JSON.stringify(getUserData),
       });
       const data = await response.json();
       return data;
