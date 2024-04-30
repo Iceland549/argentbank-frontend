@@ -176,7 +176,6 @@ export const userSlice = createSlice({
         state.error = null;
       })
       .addCase(updateUserProfile.fulfilled, (state, action) => {
-        console.log("Data returned by API:", action.payload.body);
         state.isLoading = false;
         state.userName = action.payload.body.userName;
       })
