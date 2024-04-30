@@ -20,7 +20,7 @@ function SignInForm() {
 
 
   const handleSignIn = async (e) => {
-    e.preventDefault();   
+    e.preventDefault();
     dispatch(loginUser({ email, password }));
   };
 
@@ -32,11 +32,11 @@ function SignInForm() {
         <form onSubmit={handleSignIn}>
           <div className="input-wrapper">
             <label htmlFor="username">Username</label>
-            <input type="text" id="username" value={email} onChange={(e) => setEmail(e.target.value)}/>
+            <input type="text" id="username" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="username" />
           </div>
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
           </div>
           <div className="input-remember">
             <input type="checkbox" id="remember-me" />
