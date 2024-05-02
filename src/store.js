@@ -1,5 +1,9 @@
+// store.js
+
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { userSlice } from "./slices/UserSlice"; 
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; 
 
 const initialState = {
   user: {
@@ -13,11 +17,24 @@ const initialState = {
   },
 };
 
+const userPersistConfig = {
+  key: 'user',
+  storage: storage,
+  whitelist: [ 'isAuthenticated', 'token'],
+};
+
+const persistedUserReducer = persistReducer(userPersistConfig, userSlice.reducer);
+
+const rootReducer = combineReducers({
+  user: persistedUserReducer,
+});
+
+
 const store = configureStore({
-  reducer: combineReducers({
-    user: userSlice.reducer, 
-  }),
+  reducer: rootReducer,
   preloadedState: initialState,
 });
 
-export default store;
+const persistor = persistStore(store);
+
+export { store, persistor };
