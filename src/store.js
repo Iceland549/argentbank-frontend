@@ -20,7 +20,7 @@ const initialState = {
 const userPersistConfig = {
   key: 'user',
   storage: storage,
-  whitelist: [ 'isAuthenticated', 'token'],
+  whitelist: [ 'isAuthenticated', 'isLogged', 'token', 'userName', 'firstName', 'lastName'],
 };
 
 const persistedUserReducer = persistReducer(userPersistConfig, userSlice.reducer);
